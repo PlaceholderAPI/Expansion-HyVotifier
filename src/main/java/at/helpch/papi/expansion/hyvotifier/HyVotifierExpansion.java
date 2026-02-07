@@ -85,26 +85,22 @@ public class HyVotifierExpansion extends PlaceholderExpansion {
                 return String.valueOf(voteLeaderboardManager.getVoteCount(player.getUsername()));
             case "leaderboard_position":
                 return getLeaderboardPosition(voteLeaderboardManager, player.getUsername());
-            case "leaderboard_top1_name":
-                return getTopVoterName(voteLeaderboardManager, 0);
-            case "leaderboard_top1_votes":
-                return getTopVoterVotes(voteLeaderboardManager, 0);
-            case "leaderboard_top2_name":
-                return getTopVoterName(voteLeaderboardManager, 1);
-            case "leaderboard_top2_votes":
-                return getTopVoterVotes(voteLeaderboardManager, 1);
-            case "leaderboard_top3_name":
-                return getTopVoterName(voteLeaderboardManager, 2);
-            case "leaderboard_top3_votes":
-                return getTopVoterVotes(voteLeaderboardManager, 2);
-            case "leaderboard_top4_name":
-                return getTopVoterName(voteLeaderboardManager, 3);
-            case "leaderboard_top4_votes":
-                return getTopVoterVotes(voteLeaderboardManager, 3);
-            case "leaderboard_top5_name":
-                return getTopVoterName(voteLeaderboardManager, 4);
-            case "leaderboard_top5_votes":
-                return getTopVoterVotes(voteLeaderboardManager, 4);
+        }
+
+        if (identifier.startsWith("leaderboard_top_") && (identifier.endsWith("_name") || identifier.endsWith("_votes"))) {
+            int prefixLength = "leaderboard_top_".length();
+            String middle = identifier.substring(prefixLength,
+                    identifier.length() - (identifier.endsWith("_name") ? 5 : 6));
+            try {
+                int index = Integer.parseInt(middle) - 1;
+                if (identifier.endsWith("_name")) {
+                    return getTopVoterName(voteLeaderboardManager, index);
+                } else if (identifier.endsWith("_votes")) {
+                    return getTopVoterVotes(voteLeaderboardManager, index);
+                }
+            } catch (NumberFormatException e) {
+                return null;
+            }
         }
 
         return null;
