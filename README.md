@@ -12,14 +12,6 @@ https://www.curseforge.com/hytale/mods/hytale-votifier
 %hyvotifier_next_milestone%
 %hyvotifier_leaderboard_votes%
 %hyvotifier_leaderboard_position%
-%hyvotifier_leaderboard_top1_name%
-%hyvotifier_leaderboard_top1_votes%
-%hyvotifier_leaderboard_top2_name%
-%hyvotifier_leaderboard_top2_votes%
-%hyvotifier_leaderboard_top3_name%
-%hyvotifier_leaderboard_top3_votes%
-%hyvotifier_leaderboard_top4_name%
-%hyvotifier_leaderboard_top4_votes%
-%hyvotifier_leaderboard_top5_name%
-%hyvotifier_leaderboard_top5_votes%
+%hyvotifier_leaderboard_top_<position>_name% (replace <position> with any positive integer, e.g., 1, 2, 3, ...)
+%hyvotifier_leaderboard_top_<position>_votes% (replace <position> with any positive integer, e.g., 1, 2, 3, ...)
 ```
